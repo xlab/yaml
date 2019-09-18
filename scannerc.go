@@ -800,7 +800,7 @@ func yaml_parser_fetch_next_token(parser *yaml_parser_t) bool {
 	//
 	//      '-', '?', ':', ',', '[', ']', '{', '}',
 	//      '#', '&', '*', '!', '|', '>', '\'', '\"',
-	//      '%', '@', '`'.
+	//      '%', '`'.
 	//
 	// In the block context (and, for the '-' indicator, in the flow context
 	// too), it may also start with the characters
@@ -823,7 +823,7 @@ func yaml_parser_fetch_next_token(parser *yaml_parser_t) bool {
 		parser.buffer[parser.buffer_pos] == '!' || parser.buffer[parser.buffer_pos] == '|' ||
 		parser.buffer[parser.buffer_pos] == '>' || parser.buffer[parser.buffer_pos] == '\'' ||
 		parser.buffer[parser.buffer_pos] == '"' || parser.buffer[parser.buffer_pos] == '%' ||
-		parser.buffer[parser.buffer_pos] == '@' || parser.buffer[parser.buffer_pos] == '`') ||
+		/* parser.buffer[parser.buffer_pos] == '@' || */ parser.buffer[parser.buffer_pos] == '`') ||
 		(parser.buffer[parser.buffer_pos] == '-' && !is_blank(parser.buffer, parser.buffer_pos+1)) ||
 		(parser.flow_level == 0 &&
 			(parser.buffer[parser.buffer_pos] == '?' || parser.buffer[parser.buffer_pos] == ':') &&
